@@ -1,0 +1,47 @@
+
+% Variable definitions
+\def\title{Book Title}
+\def\subtitle{Book Sub-Title}
+\def\volume{Volume 2022}
+\def\issue{Issue 2}
+\def\org{Organization}
+\def\suborg{Sub-Organization}
+\def\Org{http://}
+\def\MainAuthor{https://}
+\def\MainEditor{https://}
+\def\MainDirector{https://}
+\def\SubOrg{https://}
+
+% SF298 form
+% Package uses outdated version of the form
+\def\usesf{1}  % use sf298 form, 1 - yes, 0 - no
+\if\usesf1
+    \usepackage{sf298}
+    \ReportDate{2022.01.01}
+    \ReportType{Technical Report}
+    \DatesCovered{2021.01.01 - 2022.01.01}
+    \Title{\title: \subtitle, \volume, \issue}
+    \ContractNumber{~}
+    \GrantNumber{~}
+    \ProgramElementNumber{~}
+    \ProjectNumber{~}
+    \TaskNumber{~}
+    \WorkUnitNumber{~}
+    \Author{Many}
+    \PerformingOrg{ABC}
+    \POReportNumber{~}
+    \SponsoringAgency{XYZ}
+    \Acronyms{XYZ}  % Documentation says "Acronym"
+    \SMReportNumber{~}
+    \DistributionStatement{~}
+    \SupplementaryNotes{~}
+    \Abstract{Blah Blah Blah}
+    \SubjectTerms{~}
+    \ReportClassification{None}
+    \AbstractClassification{None}
+    \PageClassification{None}
+    \AbstractLimitation{~}
+    \NumberPages{~}
+    \ResponsiblePerson{~}
+    \RPTelephone{~}
+\fi

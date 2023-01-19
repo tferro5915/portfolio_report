@@ -1,0 +1,23 @@
+\documentclass[letter,12pt,twoside,openright,table]{book}	% Start doc
+
+\input{variables}				% Variables
+\input{Helpers/preamble}		% Setup
+\input{terms}					% Terms
+
+\begin{document}
+
+	\input{Helpers/cover} 				% Cover page
+	\include{Helpers/title} 			% Title
+	\include{Helpers/toc}				% Contents
+	
+	\include{Project1}					% First Project
+	
+	\partAurthor{}\newpart{Appendix}
+	\include{Helpers/examples}			% Examples
+	\include{Helpers/closing}			% Bibliography & Glossary
+
+\end{document}
+
+
+% docker run --rm -it -v ${PWD}:/workdir texlive/texlive bash --login /workdir/Helpers/make.sh Report
+

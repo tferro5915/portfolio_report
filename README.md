@@ -1,2 +1,4 @@
-# portfolio_report
-Latex Portfolio Report Template
+# Latex Portfolio Report Template
+
+## About
+I wanted to have a template for a portfolio of work combined into a book form... So I made this. 

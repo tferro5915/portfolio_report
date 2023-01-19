@@ -1,0 +1,53 @@
+% This document creates:
+%	Table of contents
+% 	List of figures
+%	List of tables
+%	List of terms
+%   ETC.
+
+% Copyright or warning blocks
+\vspace*{\fill}
+\begin{center}
+\phantomsection \addcontentsline{toc}{section}{Notices}
+Copyright \copyright ~\the\year~ ~|~ \href{\Org}{\org}, City, State ~|~ All Rights Reserved \\
+\end{center}
+\vspace*{\fill}
+
+\cleardoublepage
+
+\singlespacing
+\raggedbottom % Prevent glue stretch to vertical justify
+
+% Table of contents
+\printlist[main]{toc}{}{\chapter*{Table of Contents}\addcontentsline{toc}{section}{Table of Contents}}
+
+% List of figures
+\printlist[main]{lof}{}{\chapter*{List of Figures}\addcontentsline{toc}{section}{List of Figures}}
+
+% List of tables
+\printlist[main]{lot}{}{\chapter*{List of Tables}\addcontentsline{toc}{section}{List of Tables}}
+
+% List of Equations 
+\cleardoublepage
+\phantomsection \addcontentsline{toc}{section}{List of Equations}
+\listofmyequations 
+\cleardoublepage
+
+% List of Code
+\cleardoublepage
+\counterwithin{lstlisting}{part}
+\renewcommand{\lstlistingname}{Algorithm}
+\renewcommand{\lstlistlistingname}{List of Algorithms}
+\phantomsection \addcontentsline{toc}{section}{List of Algorithms}
+\lstlistoflistings
+\cleardoublepage
+
+% List of Abbreviations
+\phantomsection \addcontentsline{toc}{section}{List of Abbreviations}
+\printglossary[type=\acronymtype, title=List of Abbreviations]
+\cleardoublepage
+
+% Back to Double space
+\doublespacing
+
+\closepart

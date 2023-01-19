@@ -1,0 +1,179 @@
+
+
+% Setup document (package load order to reduce conflicts)
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage{adjustbox,amsmath,amsfonts,amssymb,amsthm,setspace,mathtools,media9,subcaption}
+\usepackage{float,multirow,titletoc,appendix,cite,notoccite,placeins,wrapfig,ragged2e}
+\usepackage{listings,graphicx,tocloft,enumitem,xparse,tabularx,booktabs,lipsum,parskip,helvet}
+\usepackage{titlesec,etoolbox,indentfirst,multicol,rotating,fancyhdr,xparse,csquotes,chngcntr}
+\usepackage[numbib]{tocbibind}
+\usepackage[space]{grffile}
+\usepackage[top=2.5cm, bottom=2.5cm, inner=3.5cm, outer=2.5cm]{geometry} %left=2.5cm, right=2.5cm
+\usepackage[table]{xcolor}
+\usepackage{pdfpages}
+\usepackage[breaklinks=true,hidelinks,bookmarksnumbered,pdfpagelayout=TwoPageRight,hypertexnames=false]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{attachfile}
+\usepackage[usestackEOL]{stackengine}
+\usepackage[acronym]{glossaries}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+% File Compression
+\pdfminorversion=9 
+\pdfcompresslevel=9
+\pdfobjcompresslevel=2
+
+% Spacing
+\doublespacing % Make double space
+\setlength{\parindent}{0.5cm}
+\titlespacing*{\chapter}{0pt}{-50pt}{20pt} % Remove large gap at start of chapter
+\setlength{\parskip}{0pt} % Prevent glue stretch from trying to vertical justify
+\AtBeginEnvironment{quote}{\onehalfspacing\small}
+\AtBeginEnvironment{quotation}{\onehalfspacing\small}
+
+\let\oldenumerate\enumerate
+\renewcommand{\enumerate}{ % Shrink numbered list line space
+  \oldenumerate
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+  \setlength{\topsep}{0pt}
+}
+
+\let\olditemize\itemize
+\renewcommand{\itemize}{ % Shrink bullet line space
+  \olditemize
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+  \setlength{\topsep}{0pt}
+}
+
+% Change spacing of headings in ToC, LoF, LoT, number alignment
+\makeatletter
+\patchcmd{\l@chapter}{1.5em}{2em}{}{}
+\patchcmd{\l@section}{1.5em}{2em}{}{}
+\patchcmd{\l@subsection}{1.5em}{2em}{}{}
+\patchcmd{\l@subsubsection}{1.5em}{2em}{}{}
+\renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+\renewcommand*\l@table{\@dottedtocline{1}{1em}{3.2em}}
+\makeatother
+
+% Create part breaks in LoF, LoT
+\newcommand{\newpart}[1]{
+    \cleardoublepage
+    %\setcounter{page}{1}
+    \setcounter{chapter}{0}
+    \phantomsection
+    \addcontentsline{lof}{part}{#1 \vspace{10pt}}
+    \addcontentsline{lot}{part}{#1 \vspace{10pt}}
+    \addcontentsline{equ}{part}{#1 \vspace{10pt}}
+    \addcontentsline{lol}{part}{#1 \vspace{10pt}}
+    \part{#1}
+    \cleardoublepage
+}
+
+% Things to do at end of part
+\newcommand{\closepart}{
+	% \phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of previous chapter in ToC
+	\cleardoublepage % Makes sure next part starts on right side
+}
+
+% Things to do at end of part
+\newcommand{\closechapter}{
+	%\phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of chapter in ToC
+	\cleardoublepage % Makes sure next part starts on right side
+}
+
+% Horizontal Rules
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\SRule}{\rule{\linewidth}{0.2mm}}
+
+% Color, Symbol, Math 
+\newcommand\gc{\cellcolor{gray!10}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\degree}{^\circ}
+\newcommand{\cross}{\times}
+\DeclareMathOperator*{\maxrange}{max}
+\DeclareMathOperator*{\minrange}{min}
+\DeclareMathOperator*{\meanrange}{mean}
+\DeclareMathOperator*{\argmax}{Arg \, max}
+\DeclareMathOperator*{\argmin}{Arg \, min}
+
+% Fonts
+\renewcommand{\familydefault}{\sfdefault}
+\captionsetup{labelfont=bf,textfont=footnotesize,skip=3pt}
+\captionsetup[figure]{labelfont=bf,textfont=footnotesize,skip=3pt}
+\captionsetup[subfigure]{labelfont=bf,textfont=footnotesize,skip=3pt}
+\captionsetup[table]{labelfont=bf,textfont=footnotesize,skip=3pt}
+
+% CrossRef prefix inline
+\crefname{figure}{\textit{Figure}}{\textit{Figures}} 
+\crefname{table}{\textit{Table}}{\textit{Tables}} 
+\crefname{equation}{\textit{Equation}}{\textit{Equations}} 
+\crefname{listing}{\textit{Algorithm}}{\textit{Algorithms}} 
+\crefname{subfigure}{\textit{Figure}}{\textit{Figures}}
+\crefname{part}{\textit{Part}}{\textit{Parts}}
+\crefname{chapter}{\textit{Chapter}}{\textit{Chapters}}
+\crefname{section}{\textit{Section}}{\textit{Sections}}
+\crefname{subsection}{\textit{Section}}{\textit{Sections}}
+\crefname{subsubsection}{\textit{Section}}{\textit{Sections}}
+\crefname{paragraph}{\textit{Section}}{\textit{Sections}}
+\crefname{subparagraph}{\textit{Section}}{\textit{Sections}}
+\crefname{appendix}{\textit{Appendix}}{\textit{Appendices}}
+\crefname{subappendix}{\textit{Appendix}}{\textit{Appendices}}
+\creflabelformat{equation}{#2#1#3}
+
+% Page stuffs
+\def\xcontentsline#1#2#3{\@ifnextchar\contentsline {\contentsline{#1}{#2}{#3}{}}{}}
+
+% Part headings
+\renewcommand{\thepart}{\Alph{part}}
+\newcommand{\partAurthor}[1]{\def\partauthor{#1}}
+\partAurthor{ }
+\titleformat{\part}[hang] {\normalfont\huge\bfseries}{}{1em}{}[\large \partauthor]
+
+% Chapter headings
+\titleformat{\chapter}[hang] {\normalfont\huge\bfseries}{\thechapter}{1em}{}
+
+% Page numbering 
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\setcounter{chapter}{0}
+\setcounter{part}{1}
+\let\oldthepage\thepage
+%\renewcommand*{\thepage}{\thepart-\ifnum\value{page}<10 0\fi\arabic{page}}
+% My preferred page numbering conflict with glossary and breaks linking.
+
+% Set section numbering
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+% Caption numbering
+\numberwithin{equation}{part}
+\numberwithin{figure}{part}
+\numberwithin{table}{part}
+% Listing counter within set in TOC.tex 
+
+% define list of equations
+\newcommand{\listequationsname}{List of Equations}
+\newlistof[chapter]{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{
+   \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}
+}
+\setlength{\cftmyequationsnumwidth}{2.3em}
+\setlength{\cftmyequationsindent}{1.5em}
+
+% command to box, label, reference, and 
+% include namedequation equation in list of equations
+\newcommand{\namedequation}[3]{
+\begin{align} \label{#3} \ensuremath{#1} \end{align} 
+\myequations{#2} \centering \small \textit{#2} \normalsize \justify }
+
+% Start tables
+\startlist[main]{toc}
+\startlist[main]{lof}
+\startlist[main]{lot}
