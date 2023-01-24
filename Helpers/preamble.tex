@@ -25,11 +25,12 @@
 \pdfminorversion=9 
 \pdfcompresslevel=9
 \pdfobjcompresslevel=2
+\pgfplotsset{compat=1.18}
 
 % Spacing
 \doublespacing % Make double space
 \setlength{\parindent}{0.5cm}
-\titlespacing*{\chapter}{0pt}{-50pt}{20pt} % Remove large gap at start of chapter
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt} % Remove large gap at start of chapter
 \setlength{\parskip}{0pt} % Prevent glue stretch from trying to vertical justify
 \AtBeginEnvironment{quote}{\onehalfspacing\small}
 \AtBeginEnvironment{quotation}{\onehalfspacing\small}
@@ -125,6 +126,11 @@
 \crefname{subparagraph}{\textit{Section}}{\textit{Sections}}
 \crefname{appendix}{\textit{Appendix}}{\textit{Appendices}}
 \crefname{subappendix}{\textit{Appendix}}{\textit{Appendices}}
+\crefname{item}{\textit{Item}}{\textit{Items}}
+\crefname{enumi}{\textit{Item}}{\textit{Items}}
+\crefname{enumii}{\textit{Item}}{\textit{Items}}
+\crefname{enumiii}{\textit{Item}}{\textit{Items}}
+\crefname{enumiv}{\textit{Item}}{\textit{Items}}
 \creflabelformat{equation}{#2#1#3}
 
 % Page stuffs
@@ -166,6 +172,31 @@
 }
 \setlength{\cftmyequationsnumwidth}{2.3em}
 \setlength{\cftmyequationsindent}{1.5em}
+
+% Listing (algorithm) settings
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.95}
+\lstdefinestyle{defaultstyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\linespread{0.9}\ttfamily\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=t,                    
+    keepspaces=true,                 
+    numbers=none,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=defaultstyle}
 
 % command to box, label, reference, and 
 % include namedequation equation in list of equations

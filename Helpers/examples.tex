@@ -1,37 +1,47 @@
 \chapter{Examples}
 
-% \section{Terms \& abbreviations}
 
-% \acrshort{gcd} \acrshort{gcd}
+\section{Citations \& References (plus lists)}
+
+Example bulleted list, of example cross references:
+\begin{itemize}
+    \item Example citation \cite{smit54}
+    \item Example multi-citation \cite{smit54,colu92}
+    \item Example multi-citation \cite{smit54,colu92,gree00}
+    \item Example cross reference \cref{examples:figures}
+    \item Example figure reference \cref{fig:referenceToFigure1}
+    \item Example sub-figure reference \cref{fig:referenceToFigure1a}
+    \item Example multi-figure reference \cref{fig:referenceToFigure1,fig:referenceToFigure2,fig:expPlot}
+    \item Example table reference \cref{tbl:referenceToTable1}
+    \item Example equation reference \cref{eq:referenceToEq1}
+    \item Example algorithm reference \cref{alg:referenceToAlg}
+    \item Example term \gls{latex} or \Gls{latex}
+    \item Example abbreviation first use \gls{gcd}
+    \item Example abbreviation second use \gls{gcd}
+    \item[Note:] I would like to describe something here
+    \item[Caveat!] And give a warning here
+\end{itemize} ~
 
 
-\section{Citations \& References}
+Example numbered list:
+\begin{enumerate}
+    \item \label{itm:first} First level item
+    \item \label{itm:second} First level item
+    \begin{enumerate}
+        \item \label{itm:third} Second level item
+        \item Second level item
+        \begin{enumerate}
+        \item Third level item
+        \item Third level item
+        \begin{enumerate}
+            \item Fourth level item
+            \item Fourth level item
+        \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate} ~
 
-Example citation \cite{smit54}
-
-Example multi-citation \cite{smit54,colu92}
-
-Example multi-citation \cite{smit54,colu92,gree00}
-
-Example cross reference \cref{examples:figures}
-
-Example figure reference \cref{fig:referenceToFigure1}
-
-Example sub-figure reference \cref{fig:referenceToFigure1a}
-
-Example multi-figure reference \cref{fig:referenceToFigure1,fig:referenceToFigure2,fig:expPlot}
-
-Example table reference \cref{tbl:referenceToTable1}
-
-Example equation reference \cref{eq:referenceToEq1}
-
-Example algorithm reference \cref{alg:referenceToAlg}
-
-Example term \gls{latex} or \Gls{latex}
-
-Example abbreviation first use \gls{gcd}
-
-Example abbreviation second use \gls{gcd}
+Take special note of \cref{itm:first,itm:second} and \cref{itm:third}.
 
 
 \section{Figures} \label{examples:figures}
@@ -118,35 +128,36 @@ Example abbreviation second use \gls{gcd}
 \section{Algorithms}
 
 \begin{lstlisting}[language=Python, caption=Python example, label=alg:referenceToAlg]
-    import numpy as np
-        
-    def incmatrix(genl1,genl2):
-        m = len(genl1)
-        n = len(genl2)
-        M = None #to become the incidence matrix
-        VT = np.zeros((n*m,1), int)  #dummy variable
-        
-        #compute the bitwise xor matrix
-        M1 = bitxormatrix(genl1)
-        M2 = np.triu(bitxormatrix(genl2),1) 
+import numpy as np
+x = "test"
     
-        for i in range(m-1):
-            for j in range(i+1, m):
-                [r,c] = np.where(M2 == M1[i,j])
-                for k in range(len(r)):
-                    VT[(i)*n + r[k]] = 1;
-                    VT[(i)*n + c[k]] = 1;
-                    VT[(j)*n + r[k]] = 1;
-                    VT[(j)*n + c[k]] = 1;
-                    
-                    if M is None:
-                        M = np.copy(VT)
-                    else:
-                        M = np.concatenate((M, VT), 1)
-                    
-                    VT = np.zeros((n*m,1), int)
-        
-        return M
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
 \end{lstlisting}
 
 
