@@ -4,16 +4,16 @@
 % Glossary
 \stepcounter{chapter}
 \phantomsection \addcontentsline{toc}{chapter}{\thechapter ~\; Glossary}
-\printglossary
+\glsaddall
+\printglossary[title={\thechapter ~\; Glossary}]
 \closechapter
 
 
 % Bibliography 
 % \nocite{*} % print remaining refs
-\bibliographystyle{IEEEtran} % Set style
-\bibliography{IEEEabrv,sources} % Load abbreviation and bibtex sources
+\bibliographystyle{unsrtdin} % Set style
+\bibliography{sources} % Load abbreviation and bibtex sources
 \closechapter
 	
-
 
 \closepart
