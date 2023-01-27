@@ -2,9 +2,9 @@
 
 
 % Glossary
-\stepcounter{chapter}
-\phantomsection \addcontentsline{toc}{chapter}{\thechapter ~\; Glossary}
-\glsaddall
+\glsaddallunused
+\stepcounter{chapter} 
+\setglossarysection{chapter}
 \printglossary[title={\thechapter ~\; Glossary}]
 \closechapter
 

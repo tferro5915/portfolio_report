@@ -16,7 +16,7 @@
 \usepackage[nameinlink]{cleveref}
 \usepackage{attachfile}
 \usepackage[usestackEOL]{stackengine}
-\usepackage[acronym]{glossaries}
+\usepackage[acronym, toc]{glossaries}
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
@@ -85,7 +85,7 @@
 
 % Things to do at end of part
 \newcommand{\closechapter}{
-	%\phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of chapter in ToC
+	%\phantomsection~\addcontentsline{toc}{section}{ } %Empty section to show final page of chapter in ToC
 	\cleardoublepage % Makes sure next part starts on right side
 }
 
