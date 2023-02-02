@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO use an output directory
+
 cd /workdir
 pdflatex -no-shell-escape -interaction=batchmode -draftmode $1
 bibtex -terse $1
