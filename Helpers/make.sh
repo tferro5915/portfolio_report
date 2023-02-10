@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# TODO use an output directory
+OUTDIR="BUILD"
 
 cd /workdir
-pdflatex -no-shell-escape -interaction=batchmode -draftmode $1
-bibtex -terse $1
-makeglossaries --batch $1
-pdflatex -no-shell-escape -interaction=batchmode -draftmode $1
-bibtex -terse $1
-makeglossaries --batch $1
-pdflatex -no-shell-escape -interaction=batchmode -draftmode $1
-pdflatex -no-shell-escape -interaction=batchmode $1
+mkdir -p $OUTDIR/Helpers
+
+pdflatex -no-shell-escape -interaction=batchmode -draftmode --output-directory $OUTDIR $1
+bibtex -terse $OUTDIR/$1
+makeglossaries --batch -d $OUTDIR $1
+makeindex $OUTDIR/$1.nlo -s nomencl.ist -o $OUTDIR/$1.nls
+pdflatex -no-shell-escape -interaction=batchmode -draftmode --output-directory $OUTDIR $1
+bibtex -terse $OUTDIR/$1
+makeglossaries --batch -d $OUTDIR $1
+makeindex $OUTDIR/$1.nlo -s nomencl.ist -o $OUTDIR/$1.nls
+pdflatex -no-shell-escape -interaction=batchmode -draftmode --output-directory $OUTDIR $1
+pdflatex -no-shell-escape -interaction=batchmode -output-directory $OUTDIR $1

@@ -1,25 +1,57 @@
-
 \makeglossaries
+\makenomenclature
 
+
+
+% Nomenclature
+\nomenclature{\(c\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?c}{Speed of light in a vacuum}\nomunit{\SI{299792458}{\meter\per\second}}}
+\nomenclature{\(h\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?h}{Planck constant}\nomunit{\SI[group-digits=false]{6.62607015e-34}{\joule\per\hertz}}}
+\nomenclature{\(G\)}{\href{https://physics.nist.gov/cgi-bin/cuu/Value?bg}{Gravitational constant}\nomunit{\SI[group-digits=false]{6.67430e-11}{\meter\cubed\per\kilogram\per\second\squared}}}
+\nomenclature{\(\mathbb{R}\)}{Real numbers}
+\nomenclature{\(\mathbb{C}\)}{Complex numbers}
+\nomenclature{\(\mathbb{H}\)}{Quaternions}
+\nomenclature{\(V\)}{Constant volume}
+\nomenclature{\(\rho\)}{Friction index}
+
+
+
+% Company names or products
+\proper{matlab}{MATLAB}{https://en.wikipedia.org/wiki/MATLAB}
+\proper{mathworks}{Mathworks}{https://www.mathworks.com/products/matlab.html}
+\proper{simulink}{Simulink}{}
+\proper{nasa}{NASA}{https://www.nasa.gov/}
+
+
+
+% Glossary entries
 \newglossaryentry{latex}
 {
-        name=latex,
+        name=Latex,
         description={Is a mark up language specially suited for 
 scientific documents}
 }
 
 \newglossaryentry{maths}
 {
-        name=mathematics,
+        name=Mathematics,
         description={Mathematics is what mathematicians do \cite{phil99}}
 }
 
 \newglossaryentry{formula}
 {
-        name=formula,
+        name=Formula,
         description={A mathematical expression}
 }
 
-\newacronym[see={[See:]{maths}}]{gcd}{GCD}{Greatest Common Divisor}
+\newglossaryentry{nasa@term}
+{
+        name=NASA,
+        description={The National Aeronautics and Space Administration (\useproper{nasa}) is an independent agency of the U.S. federal government responsible for the civil space program, aeronautics research, and space research.}
+}
 
+
+
+% Abbreviation entries
+\newacronym[see={[See:]{maths}}]{gcd}{GCD}{Greatest Common Divisor}
 \newacronym{lcm}{LCM}{Least Common Multiple}
+\newacronym[see={[See:]{nasa@term}}]{nasa@abbr}{NASA}{The National Aeronautics and Space Administration}

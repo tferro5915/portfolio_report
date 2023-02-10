@@ -1,6 +1,12 @@
-\chapter{Examples}
+\chapter{Examples}\label{chap:chap}
 
 % TODO add sections depths and references to them
+\section{Section}\label{sec:sec}
+\subsection{SubSection}\label{subsec:subsec}
+\subsubsection{SubSubSection}\label{subsubsec:subsubsec}
+\paragraph{Paragraph}\label{par:par}
+\subparagraph{SubParagraph}\label{subpar:subpar}
+
 
 \section{Citations \& References (plus lists)}
 
@@ -10,6 +16,7 @@ Example bulleted list, of example cross references:
     \item Example multi-citation \cite{smit54,colu92}
     \item Example multi-citation \cite{smit54,colu92,gree00}
     \item Example cross reference \cref{examples:figures}
+    \item Example cross references \cref{chap:chap,sec:sec,subsec:subsec,subsubsec:subsubsec,par:par,subpar:subpar}
     \item Example figure reference \cref{fig:referenceToFigure1}
     \item Example sub-figure reference \cref{fig:referenceToFigure1a}
     \item Example multi-figure reference \cref{fig:referenceToFigure1,fig:referenceToFigure2,fig:expPlot}
@@ -19,6 +26,9 @@ Example bulleted list, of example cross references:
     \item Example term \gls{latex} or \Gls{latex}
     \item Example abbreviation first use \gls{gcd}
     \item Example abbreviation second use \gls{gcd}
+    \item Example company and product \useproper{matlab} and \useproper{simulink} by \useproper{mathworks} 
+    \item Example abbreviation, term, and organization all in one \gls{nasa@abbr}
+    \item Example hyperlink \href{https://www.lipsum.com/}{Lorem Ipsum}
     \item[Note:] I would like to describe something here
     \item[Caveat!] And give a warning here
 \end{itemize} ~

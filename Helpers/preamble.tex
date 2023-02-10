@@ -3,8 +3,8 @@
 % Setup document (package load order to reduce conflicts)
 \usepackage[scaled]{helvet}
 \usepackage[T1]{fontenc}
-\usepackage{adjustbox,amsmath,amsfonts,amssymb,amsthm,setspace,mathtools,media9,subcaption}
-\usepackage{float,multirow,titletoc,appendix,cite,notoccite,placeins,wrapfig,ragged2e}
+\usepackage{adjustbox,amsmath,amsfonts,amssymb,amsthm,setspace,mathtools,media9,subcaption,siunitx}
+\usepackage{float,multirow,titletoc,appendix,cite,notoccite,placeins,wrapfig,ragged2e,nomencl,namedef}
 \usepackage{listings,graphicx,tocloft,enumitem,xparse,tabularx,booktabs,lipsum,parskip,helvet}
 \usepackage{titlesec,etoolbox,indentfirst,multicol,rotating,fancyhdr,xparse,csquotes,chngcntr}
 \usepackage[numbib]{tocbibind}
@@ -26,6 +26,17 @@
 \pdfcompresslevel=9
 \pdfobjcompresslevel=2
 \pgfplotsset{compat=1.18}
+
+% Hyper ref options
+\hypersetup{
+    colorlinks=true,
+    linkcolor=darkgray,
+    filecolor=violet,      
+    urlcolor=blue,
+    citecolor=darkgray,
+    pdftitle=\title,
+    pdfauthor=\MainAuthor
+  }
 
 % Spacing
 \doublespacing % Make double space
@@ -89,6 +100,9 @@
 	\cleardoublepage % Makes sure next part starts on right side
 }
 
+% Nomenclature 
+\newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
 % Horizontal Rules
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \newcommand{\SRule}{\rule{\linewidth}{0.2mm}}
@@ -141,6 +155,7 @@
 \newcommand{\partAurthor}[1]{\def\partauthor{#1}}
 \partAurthor{ }
 \titleformat{\part}[hang] {\normalfont\huge\bfseries}{}{1em}{}[\large \partauthor]
+\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
 
 % Chapter headings
 \titleformat{\chapter}[hang] {\normalfont\huge\bfseries}{\thechapter}{1em}{}
@@ -198,8 +213,16 @@
 }
 \lstset{style=defaultstyle}
 
+% Company & Product names, proper nouns to not be confused with abbreviations 
+\makeatletter
+\newcommand{\proper}[3]{
+  \global\@namedef{proper@#1}{\href{#3}{\textit{#2}}}
+}
+\newcommand{\useproper}[1]{\@ifundefined{proper@#1}{???}{\@nameuse{proper@#1}}}
+\makeatother
+
 % command to box, label, reference, and 
-% include namedequation equation in list of equations
+% include named equation in list of equations
 \newcommand{\namedequation}[3]{
 \begin{align} \label{#3} \ensuremath{#1} \end{align} 
 \myequations{#2} \centering \small \textit{#2} \normalsize \justify }
