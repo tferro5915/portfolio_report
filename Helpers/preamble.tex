@@ -66,12 +66,12 @@
 
 % Change spacing of headings in ToC, LoF, LoT, number alignment
 \makeatletter
-\patchcmd{\l@chapter}{1.5em}{2em}{}{}
-\patchcmd{\l@section}{1.5em}{2em}{}{}
-\patchcmd{\l@subsection}{1.5em}{2em}{}{}
-\patchcmd{\l@subsubsection}{1.5em}{2em}{}{}
-\renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
-\renewcommand*\l@table{\@dottedtocline{1}{1em}{3.2em}}
+  \patchcmd{\l@chapter}{1.5em}{2em}{}{}
+  \patchcmd{\l@section}{1.5em}{2em}{}{}
+  \patchcmd{\l@subsection}{1.5em}{2em}{}{}
+  \patchcmd{\l@subsubsection}{1.5em}{2em}{}{}
+  \renewcommand*\l@figure{\@dottedtocline{1}{1em}{3.2em}}
+  \renewcommand*\l@table{\@dottedtocline{1}{1em}{3.2em}}
 \makeatother
 
 % Create part breaks in LoF, LoT
@@ -155,7 +155,15 @@
 \newcommand{\partAurthor}[1]{\def\partauthor{#1}}
 \partAurthor{ }
 \titleformat{\part}[hang] {\normalfont\huge\bfseries}{}{1em}{}[\large \partauthor]
-\providecommand{\keywords}[1]{\textbf{\textit{Keywords:}} #1}
+
+% Key words
+\def\usekeywords{}
+\usekeywords{ }
+\def\extendkeywords#1#2{\edef\usekeywords{#1\usekeywords#2}}
+\providecommand{\keywords}[1]{
+  \extendkeywords{}{#1; }
+  \textbf{\textit{Keywords:}} #1
+  }
 
 % Chapter headings
 \titleformat{\chapter}[hang] {\normalfont\huge\bfseries}{\thechapter}{1em}{}
@@ -215,10 +223,10 @@
 
 % Company & Product names, proper nouns to not be confused with abbreviations 
 \makeatletter
-\newcommand{\proper}[3]{
-  \global\@namedef{proper@#1}{\href{#3}{\textit{#2}}}
-}
-\newcommand{\useproper}[1]{\@ifundefined{proper@#1}{???}{\@nameuse{proper@#1}}}
+  \newcommand{\proper}[3]{
+    \global\@namedef{proper@#1}{\href{#3}{\textit{#2}}}
+  }
+  \newcommand{\useproper}[1]{\@ifundefined{proper@#1}{???}{\@nameuse{proper@#1}}}
 \makeatother
 
 % command to box, label, reference, and 
