@@ -2,6 +2,15 @@
 
 % SF298 if needed 
 \if\usesf1
+    
+    \ifdefined\auxusekeywords
+        \SubjectTerms{\auxusekeywords}
+    \fi
+
+    \ifdefined\auxuseauthors
+        \Author{\auxuseauthors}
+    \fi
+
     \MakeRptDocPage
     \cleardoublepage
 \fi

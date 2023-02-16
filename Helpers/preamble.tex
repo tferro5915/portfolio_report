@@ -90,6 +90,7 @@
 
 % Things to do at end of part
 \newcommand{\closepart}{
+  \clearauthors
 	% \phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of previous chapter in ToC
 	\cleardoublepage % Makes sure next part starts on right side
 }
@@ -152,18 +153,20 @@
 
 % Part headings
 \renewcommand{\thepart}{\Alph{part}}
-\newcommand{\partAurthor}[1]{\def\partauthor{#1}}
-\partAurthor{ }
+\def\useauthors{}
+\def\extendauthors#1#2{\edef\useauthors{#1\useauthors#2}}
+\newcommand{\partAurthor}[1]{
+  \extendauthors{}{#1 \\}
+  \def\partauthor{#1}}
+\newcommand{\clearauthors}{\def\partauthor{}}
 \titleformat{\part}[hang] {\normalfont\huge\bfseries}{}{1em}{}[\large \partauthor]
 
 % Key words
 \def\usekeywords{}
-\usekeywords{ }
 \def\extendkeywords#1#2{\edef\usekeywords{#1\usekeywords#2}}
-\providecommand{\keywords}[1]{
+\newcommand{\keywords}[1]{
   \extendkeywords{}{#1; }
-  \textbf{\textit{Keywords:}} #1
-  }
+  \textbf{\textit{Keywords:}} #1}
 
 % Chapter headings
 \titleformat{\chapter}[hang] {\normalfont\huge\bfseries}{\thechapter}{1em}{}

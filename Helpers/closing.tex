@@ -19,10 +19,14 @@
 \closepart
 
 
-% Update SF variables if needed
-% Wont do anything now, needs package update to allow definition after printing SF page
+% Store values for SF298 variables if needed
 \if\usesf1
-    \if\sfkeywords1
-        %\SubjectTerms{\usekeywords}
-    \fi
+    \makeatletter
+        \if\sfkeywords1
+            \immediate\write\@mainaux{\gdef\string\auxusekeywords{\usekeywords}}
+        \fi
+        \if\sfauthors1
+            \immediate\write\@mainaux{\gdef\string\auxuseauthors{\useauthors}}
+        \fi
+    \makeatother
 \fi
