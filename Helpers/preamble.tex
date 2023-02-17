@@ -91,6 +91,7 @@
 % Things to do at end of part
 \newcommand{\closepart}{
   \clearauthors
+  \glsresetall
 	% \phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of previous chapter in ToC
 	\cleardoublepage % Makes sure next part starts on right side
 }
@@ -103,6 +104,15 @@
 
 % Nomenclature 
 \newcommand{\nomunit}[1]{\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+
+% Nested abbreviations 
+\newcommand*\nestedglsentry[1]{%
+  \protect\ifglsused{#1}{%
+    \glsentryshort{#1}%
+  }{%
+    \glsentrylong{#1} (\glsentryshort{#1})%
+  }%
+}
 
 % Horizontal Rules
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
