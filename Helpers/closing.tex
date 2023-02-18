@@ -28,5 +28,8 @@
         \if\sfauthors1
             \immediate\write\@mainaux{\gdef\string\auxuseauthors{\useauthors}}
         \fi
+        \if\sfparts1
+            \immediate\write\@mainaux{\gdef\string\auxuseparts{\useparts}}
+        \fi
     \makeatother
 \fi

@@ -15,8 +15,9 @@
 % SF298 form
 % Package uses outdated version of the form 
 \def\usesf{1}  % use sf298 form, 1 - yes, 0 - no
-\def\sfkeywords{1}  % use keywords added throughout to update this variable at second pass
-\def\sfauthors{1}  % use authors added throughout to update this variable at second pass
+\def\sfkeywords{1}  % use keywords added throughout to update SubjectTerms/KeyWords variable at second pass
+\def\sfauthors{1}  % use authors added throughout to update Author variable at second pass
+\def\sfparts{1}  % use parts added throughout to update Abstract variable at second pass
 \if\usesf1
     \usepackage{sf298}
     \ReportDate{2022.01.01}
@@ -37,6 +38,7 @@
     \SMReportNumber{~}
     \DistributionStatement{~}
     \SupplementaryNotes{~}
+    \def\PartialAbstract{\dots \\ This compendium includes titles: }
     \Abstract{~}
     \SubjectTerms{~}
     \ReportClassification{None}

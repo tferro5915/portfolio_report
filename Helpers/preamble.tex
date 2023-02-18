@@ -75,9 +75,11 @@
 \makeatother
 
 % Create part breaks in LoF, LoT
+\def\useparts{}
+\def\extendparts#1#2{\edef\useparts{#1\useparts#2}}
 \newcommand{\newpart}[1]{
     \cleardoublepage
-    %\setcounter{page}{1}
+    \glsresetall
     \setcounter{chapter}{0}
     \phantomsection
     \addcontentsline{lof}{part}{#1 \vspace{10pt}}
@@ -85,20 +87,18 @@
     \addcontentsline{equ}{part}{#1 \vspace{10pt}}
     \addcontentsline{lol}{part}{#1 \vspace{10pt}}
     \part{#1}
+    \extendparts{}{#1; }
     \cleardoublepage
 }
 
 % Things to do at end of part
 \newcommand{\closepart}{
   \clearauthors
-  \glsresetall
-	% \phantomsection~\addcontentsline{toc}{chapter}{ } %Empty section to show final page of previous chapter in ToC
 	\cleardoublepage % Makes sure next part starts on right side
 }
 
 % Things to do at end of part
 \newcommand{\closechapter}{
-	%\phantomsection~\addcontentsline{toc}{section}{ } %Empty section to show final page of chapter in ToC
 	\cleardoublepage % Makes sure next part starts on right side
 }
 
