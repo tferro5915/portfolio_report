@@ -146,6 +146,23 @@ Take special note of \cref{itm:first,itm:second} and \cref{itm:third}.
 
 \namedequation{a^2 + b^2 = c^2}{Pythagorean Theorem}{eq:referenceToEq2}
 
+\begin{equation} \label{eq:kirschK}
+    \begin{array}{c  c  c}
+        K_0 = \begin{matrix*}[r] -3 & -3 & \phantom {-}5 \\ -3 & \gc0 & 5 \\ -3 & -3 & 5  \end{matrix*} & 
+        K_1 = \begin{matrix*}[r] -3 & 5 & 5 \\ -3 & \gc0 & 5 \\ -3 & -3 & -3 \end{matrix*} &
+        K_2 = \begin{matrix*}[r] 5 & 5 & 5 \\ -3 & \gc0 & -3 \\ -3 & -3 & -3 \end{matrix*}  \\ \\
+        K_3 = \begin{matrix*}[r] 5 & 5 & -3 \\ 5 & \gc0 & -3 \\ -3 & -3 & -3 \end{matrix*} &
+        K_4 = \begin{matrix*}[r] \phantom {-}5 & -3 & -3 \\ 5 & \gc0 & -3 \\ 5 & -3 & -3  \end{matrix*} & 
+        K_5 = \begin{matrix*}[r] -3 & -3 & -3 \\ 5 &\gc 0 & -3 \\ 5 & 5 & -3 \end{matrix*}  \\ \\
+        K_6 = \begin{matrix*}[r] -3 & -3 & -3 \\ -3 & \gc0 & -3 \\ 5 & 5 & 5 \end{matrix*} &
+        K_7 = \begin{matrix*}[r] -3 & -3 & -3 \\ -3 &\gc 0 & 5 \\ -3 & 5 & 5 \end{matrix*}
+    \end{array}
+\end{equation}
+
+\namedequation{E = \maxrange_{0 \le i \le n-1} \left\{ K_i*I_{x,y} \right\} \\ 
+                \Theta = \argmax_{0 \le i \le n-1} \left\{ K_i*I_{x,y} \right\} \cdot \pi/4
+                }{Kirsch Operator}{eq:kirschET}
+
 
 \section{Algorithms}
 
