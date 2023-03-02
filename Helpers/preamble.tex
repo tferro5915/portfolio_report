@@ -202,12 +202,15 @@
 
 % define list of equations
 \newcommand{\listequationsname}{List of Equations}
-\newlistof[chapter]{myequations}{equ}{\listequationsname}
+\newlistof[part]{myequations}{equ}{\listequationsname}
 \newcommand{\myequations}[1]{
    \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}
 }
 \setlength{\cftmyequationsnumwidth}{2.3em}
 \setlength{\cftmyequationsindent}{1.5em}
+\newcommand{\namedequation}[3]{
+  \begin{align} \label{#3} \ensuremath{#1} \end{align} 
+  \myequations{#2} \centering \footnotesize \textit{#2} \normalsize \justify }
 
 % Listing (algorithm) settings
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -241,12 +244,6 @@
   }
   \newcommand{\useproper}[1]{\@ifundefined{proper@#1}{???}{\@nameuse{proper@#1}}}
 \makeatother
-
-% command to box, label, reference, and 
-% include named equation in list of equations
-\newcommand{\namedequation}[3]{
-\begin{align} \label{#3} \ensuremath{#1} \end{align} 
-\myequations{#2} \centering \small \textit{#2} \normalsize \justify }
 
 % Start tables
 \startlist[main]{toc}
